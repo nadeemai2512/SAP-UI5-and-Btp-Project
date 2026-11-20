@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+  <Dialog id="addDialog" title="{i18n>addProduct}" contentWidth="28rem">
+    <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+      <Label text="{i18n>name}" required="true"/>
+      <Input id="inName" valueLiveUpdate="true"/>
+      <Label text="{i18n>category}"/>
+      <Input id="inCategory"/>
+      <Label text="{i18n>description}"/>
+      <TextArea id="inDescription" rows="3"/>
+      <Label text="{i18n>price}"/>
+      <Input id="inPrice" type="Number"/>
+      <Label text="{i18n>currency}"/>
+      <Input id="inCurrency" value="EUR" maxLength="3"/>
+      <Label text="{i18n>stock}"/>
+      <Input id="inStock" type="Number" value="0"/>
+    </f:SimpleForm>
+    <beginButton><Button text="{i18n>save}" type="Emphasized" press=".onSave"/></beginButton>
+    <endButton><Button text="{i18n>cancel}" press=".onCancel"/></endButton>
+  </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,29 @@
+{
+  "name": "btp-ui5-products",
+  "version": "1.0.0",
+  "description": "SAP BTP (CAP) backend + SAPUI5 frontend - Product Manager",
+  "private": true,
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch --open products/webapp/index.html",
+    "build": "mbt build -t gen --mtar btp-ui5-products.mtar",
+    "deploy": "cf deploy gen/btp-ui5-products.mtar"
+  },
+  "dependencies": {
+    "@sap/cds": "^8",
+    "@cap-js/hana": "^1",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1"
+  },
+  "cds": {
+    "requires": {
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
+      }
+    }
+  }
+}

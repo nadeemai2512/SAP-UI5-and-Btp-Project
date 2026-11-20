@@ -1,0 +1,46 @@
+<mvc:View
+  controllerName="com.demo.products.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">
+  <Page id="page" title="{i18n>appTitle}">
+    <content>
+      <Table id="productTable"
+        mode="SingleSelectLeft"
+        growing="true"
+        growingThreshold="20"
+        items="{ path: '/Products', parameters: { $orderby: 'name' } }">
+        <headerToolbar>
+          <OverflowToolbar>
+            <Title text="{i18n>products}" level="H2"/>
+            <ToolbarSpacer/>
+            <SearchField width="16rem" placeholder="{i18n>search}" search=".onSearch"/>
+            <Button icon="sap-icon://add" text="{i18n>add}" type="Emphasized" press=".onAdd"/>
+            <Button icon="sap-icon://add-product" text="{i18n>restock}" press=".onRestock"/>
+            <Button icon="sap-icon://delete" text="{i18n>delete}" type="Reject" press=".onDelete"/>
+          </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+          <Column><Text text="{i18n>name}"/></Column>
+          <Column minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>category}"/></Column>
+          <Column minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>description}"/></Column>
+          <Column hAlign="End"><Text text="{i18n>price}"/></Column>
+          <Column hAlign="End"><Text text="{i18n>stock}"/></Column>
+        </columns>
+        <items>
+          <ColumnListItem>
+            <cells>
+              <ObjectIdentifier title="{name}"/>
+              <Text text="{category}"/>
+              <Text text="{description}"/>
+              <ObjectNumber number="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 } }" unit="{currency}"/>
+              <ObjectStatus
+                text="{stock}"
+                state="{ path: 'stock', formatter: '.formatter.stockState' }"/>
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+  </Page>
+</mvc:View>
